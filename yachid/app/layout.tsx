@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora" });
@@ -15,24 +17,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html
-      lang="en"
-      className={`${sora.variable} ${inter.variable}`}
-      suppressHydrationWarning
-    >
-      <body className="flex min-h-screen flex-col font-body">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          themes={["dark", "light"]}
-          enableSystem={false}
-        >
+    <html lang="en" className={`${sora.variable} ${inter.variable}`} suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="dark" themes={["dark", "light"]} enableSystem={false}>
+          <Navbar />
           {children}
-          <Toaster position="top-right" />
+          <Footer />
+          <Toaster theme="dark" position="top-right" />
         </ThemeProvider>
       </body>
     </html>

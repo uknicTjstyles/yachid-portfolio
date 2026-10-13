@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import BrandLogo from "@/components/BrandLogo";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -17,9 +18,10 @@ const links = [
 ];
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  const active = useActiveSection(links.map((l) => l.href));
-
+  const pathname = usePathname();
+    const isHome = pathname === "/";
+      const [open, setOpen] = useState(false);
+        const active = useActiveSection(isHome ? links.map((l) => l.href) : []);
   return (
     <>
       <motion.header
@@ -37,7 +39,7 @@ export default function Navbar() {
             {links.map((l) => (
               <li key={l.href} className="relative">
                 <a
-                  href={`#${l.href}`}
+                  href={`${isHome ? "" : "/"}#${l.href}`}
                   className={`relative z-10 block whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition-colors xl:px-3 ${
                     active === l.href ? "text-white" : "text-slate hover:text-fg"
                   }`}
@@ -93,7 +95,7 @@ export default function Navbar() {
               {links.map((l) => (
                 <li key={l.href}>
                   <a
-                    href={`#${l.href}`}
+                    href={`${isHome ? "" : "/"}#${l.href}`}
                     onClick={() => setOpen(false)}
                     className={`block rounded-xl px-3 py-2 text-sm font-medium ${
                       active === l.href ? "bg-primary text-white" : "text-slate hover:bg-muted"

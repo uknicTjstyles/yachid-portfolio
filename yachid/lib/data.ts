@@ -1,6 +1,6 @@
 export const SOCIALS = {
   github: "https://github.com/uknicTjstyles",
-  linkedin: "https://www.linkedin.com/posts/lazy-programmer_hilarious-d-ugcPost-7515306994434547712-Dmio?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEFm20oBIaFIDtBuWJkM_cQyMigWRtmoRos",
+  linkedin: "https://www.linkedin.com/in/tehillah-jamgbadi-40a578267?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   x: "https://x.com/TehillahJa89535",
   email: "jamgbaditehillah@gmail.com",
   phone: "+2349034287165",
